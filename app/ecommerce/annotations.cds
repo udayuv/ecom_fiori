@@ -84,3 +84,43 @@ annotate service.Products with @(
         },
     ]
 );
+annotate service.Products with @(
+    UI.SelectionFields : [
+        rating,
+        name,
+        discount,
+        category_ID,
+    ]
+);
+annotate service.Products with {
+    rating @Common.Label : '{i18n>rating}'
+};
+annotate service.Products with {
+    name @Common.Label : '{i18n>pname}'
+};
+annotate service.Products with {
+    discount @Common.Label : '{i18n>discount}'
+};
+annotate service.Products with {
+    category @Common.Label : '{i18n>category}'
+};
+annotate service.Products with {
+    category @(Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Category',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : category_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true
+)};
+annotate service.Category with {
+    ID @Common.Text : {
+            $value : name,
+            ![@UI.TextArrangement] : #TextOnly,
+        }
+};

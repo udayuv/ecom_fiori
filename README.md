@@ -99,3 +99,80 @@ a2359186-7806-4168-a4c5-0f2ae99db707,iPhone x,Model A19211 6.5-inch Super Retina
 212a7668-9ca7-4598-a3da-fbe42fab817c,Samsung Galaxy Book,"Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",1499,3.25,50,0584aefa-3608-4f34-993f-b7b5d1fe75d7,4.15
 97c1f5c9-8f7a-44ab-8541-5088b8c7fc47,Microsoft Surface Laptop 4,Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen,1499,4.43,68,0584aefa-3608-4f34-993f-b7b5d1fe75d7,10.23
 ```
+
+## 04 Configure the List View Page
+#### Adapt Filter
+To add adapt filter on list page we use SelectionFields on the entity to which we want to add, here we have used Products in `annotations.cds`
+
+```
+annotate service.Products with @(
+    UI.SelectionFields : [
+        rating,
+        name,
+        discount,
+        category_ID,
+    ]
+);
+```
+
+Similarly to add i18n language have given the label
+
+```
+annotate service.Products with {
+    rating @Common.Label : '{i18n>rating}'
+};
+annotate service.Products with {
+    name @Common.Label : '{i18n>pname}'
+};
+annotate service.Products with {
+    discount @Common.Label : '{i18n>discount}'
+};
+annotate service.Products with {
+    category @Common.Label : '{i18n>category}'
+};
+```
+
+Also it needs to be maintained in i18n.properties file too which is under _i18n folder.
+```
+#XFLD,120: Label for a filter field
+discount=Discount
+
+#XFLD,120: Label for a filter field
+pname=Product Name
+
+#XFLD,120: Label for a filter field
+rating=Rating
+
+#XFLD,120: Label for a filter field
+category=Category
+```
+#### Value Help
+
+1. For **Category** filters, in the **Display Type** dropdown menu, select `Value Help`. A popup shows up
+2. In the Define Value Help Properties for Category popup:
+    - Choose the dropdown menu in the `Value Description Property field` and select `name`.
+    - Choose the dropdown menu in the `Text Arragment` as `Text Only` because we don't want to show the id
+    - Choose Apply.
+
+```
+annotate service.Products with {
+    category @(Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Category',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : category_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true
+)};
+annotate service.Category with {
+    ID @Common.Text : {
+            $value : name,
+            ![@UI.TextArrangement] : #TextOnly,
+        }
+};
+```
