@@ -230,3 +230,28 @@ UI.HeaderInfo : {
     - Enter Overview in the Label field.
     - Choose the Globe icon to generate a translatable text key.
     - Choose Add.
+
+It will add the below code to annotations.cds under `UI.Facet`
+```
+    {
+        $Type : 'UI.CollectionFacet',
+        Label : '{i18n>overview}',
+        ID : 'i18noverview',
+        Facets : [
+        ],
+    }
+```
+
+##### Add Details subsection
+Navigate to Sections → Overview → Subsections.
+
+Choose the Plus icon to add more sections and choose Add Form Section.
+
+3.  In the **Add Form Section** popup:
+    - Enter Details in the **Label** field.
+    - Choose the Globe icon to generate a translatable text key.
+    - Choose Add.
+
+#### Configure fields
+1. Choose **Sections** → **General Information** and choose the Globe icon in the Label field for General Information to generate a translatable text key.
+2. Navigate to **Sections** → **General Information** → **Form** → **Fields** and delete the description,thumbnail and images fields.

@@ -47,11 +47,6 @@ annotate service.Products with @(
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'description',
-                Value : description,
-            },
-            {
-                $Type : 'UI.DataField',
                 Label : 'price',
                 Value : price,
             },
@@ -67,18 +62,8 @@ annotate service.Products with @(
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'images',
-                Value : images,
-            },
-            {
-                $Type : 'UI.DataField',
                 Label : 'discount',
                 Value : discount,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'thumbnail',
-                Value : thumbnail,
             },
         ],
     },
@@ -86,9 +71,21 @@ annotate service.Products with @(
         {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
-            Label : 'General Information',
+            Label : '{i18n>GeneralInformation}',
             Target : '@UI.FieldGroup#GeneratedGroup1',
-        }
+        },
+        {
+            $Type : 'UI.CollectionFacet',
+            Label : '{i18n>overview}',
+            ID : 'i18noverview',
+            Facets : [
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : '{i18n>Details}',
+                    ID : 'i18nDetails',
+                    Target : '@UI.FieldGroup#i18nDetails',
+                },],
+        },
     ]
 );
 annotate service.Products with @(
@@ -153,5 +150,12 @@ annotate service.Products with @(
             Value : description,
         },
         TypeImageUrl : 'sap-icon://alert',
+    }
+);
+annotate service.Products with @(
+    UI.FieldGroup #i18nDetails : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+        ],
     }
 );
