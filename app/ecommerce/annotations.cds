@@ -19,9 +19,8 @@ annotate service.Products with @(
             Value : price,
         },
         {
-            $Type : 'UI.DataField',
-            Label : '{i18n>rating}',
-            Value : rating,
+            $Type : 'UI.DataFieldForAnnotation',
+            Target : '@UI.DataPoint#rating',
         },
         {
             $Type : 'UI.DataField',
@@ -51,9 +50,8 @@ annotate service.Products with @(
                 Value : price,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'rating',
-                Value : rating,
+                $Type : 'UI.DataFieldForAnnotation',
+                Target : '@UI.DataPoint#rating',
             },
             {
                 $Type : 'UI.DataField',
@@ -150,6 +148,11 @@ annotate service.Products with @(
             Value : description,
         },
         TypeImageUrl : 'sap-icon://alert',
+    },
+    UI.DataPoint #rating : {
+        Value : rating,
+        Visualization : #Rating,
+        TargetValue : 5,
     }
 );
 annotate service.Products with @(

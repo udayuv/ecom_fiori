@@ -294,3 +294,22 @@ Make the change in manifest.json file value can be `Page/Control`
 ```
 "variantManagement": "Control",
 ```
+
+### Rating
+Since we want to add Rating in our list table hence replace Rating with this to the UI.LineItem and GeneralInformation Fieldgroup
+```
+{
+    $Type : 'UI.DataFieldForAnnotation',
+    Target : '@UI.DataPoint#rating',
+}
+```
+here we have kept the type as DataFieldForAnnotation and target is pointing to a Datapoint which is on product and used for Visualization of a single point of data, typically a number; may also be textual, e.g. a status value for more info [DataPointType](https://github.com/SAP/odata-vocabularies/blob/8d9f4484c4b47d80faf090abecfa184dcc4468b7/vocabularies/UI.md#DataPointType)
+
+annotate service.Products with @(
+    UI.DataPoint #rating : {
+        Value : rating,
+        Visualization : #Rating,
+        TargetValue : 5,
+    }
+);
+
