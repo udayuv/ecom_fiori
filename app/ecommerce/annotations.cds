@@ -69,16 +69,16 @@ annotate service.Products with @(
     },
     UI.Facets : [
         {
+            $Type : 'UI.CollectionFacet',
+            Label : '{i18n>overview}',
+            ID : 'i18noverview',
+            Facets : [
+                {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
             Label : '{i18n>GeneralInformation}',
             Target : '@UI.FieldGroup#GeneratedGroup1',
         },
-        {
-            $Type : 'UI.CollectionFacet',
-            Label : '{i18n>overview}',
-            ID : 'i18noverview',
-            Facets : [
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : '{i18n>Details}',
@@ -156,6 +156,37 @@ annotate service.Products with @(
     UI.FieldGroup #i18nDetails : {
         $Type : 'UI.FieldGroupType',
         Data : [
-        ],
+            {
+                $Type : 'UI.DataField',
+                Value : category_ID,
+            },{
+                $Type : 'UI.DataField',
+                Value : status_code,
+            },{
+                $Type : 'UI.DataField',
+                Value : modifiedAt,
+            },{
+                $Type : 'UI.DataField',
+                Value : description,
+                Label : '{i18n>pDesc}',
+            },{
+                $Type : 'UI.DataField',
+                Value : createdAt,
+            },{
+                $Type : 'UI.DataField',
+                Value : createdBy,
+            },{
+                $Type : 'UI.DataField',
+                Value : modifiedBy,
+            },],
     }
 );
+annotate service.Products with {
+    status @Common.Text : status.descr
+};
+annotate service.Products with {
+    category @Common.Text : {
+        $value : category.name,
+        ![@UI.TextArrangement] : #TextOnly,
+    }
+};

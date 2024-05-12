@@ -5,3 +5,5 @@ service ProductService {
     @readonly
     entity Category as projection on ecom.Category;
 }
+
+annotate ProductService.Products with @odata.draft.enabled; 

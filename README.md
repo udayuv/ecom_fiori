@@ -255,3 +255,33 @@ Choose the Plus icon to add more sections and choose Add Form Section.
 #### Configure fields
 1. Choose **Sections** → **General Information** and choose the Globe icon in the Label field for General Information to generate a translatable text key.
 2. Navigate to **Sections** → **General Information** → **Form** → **Fields** and delete the description,thumbnail and images fields.
+3. Navigate to **Sections**, drag the **General Information** and drop it in the **Overview** → **Subsections** node.
+4. Navigate to **Sections** → **Overview** → **Subsections** → **Details** → **Form** → **Fields**, choose the Plus icon to add more fields, and then choose **Add Basic Fields**.
+4. In the Add Basic Fields popup
+    - From the dropdown menu in the Fields field, select **status_code**, and **category_Id**.
+    - Choose **Add**.
+5. For the **Status** field, select `status/descr` in the **Text** dropdown menu and then select Value Help in the Display Type dropdown menu. A popup opens.
+6. In the Define Value Help Properties for Status popup:
+    - Select **Status** in the Value Source Entity dropdown menu.
+    - Select **code** in the Value Source Property dropdown menu.
+    - Select **descr** in the Value Description Property dropdown menu.
+    - Leave the default values for the rest of the properties and choose Apply.
+
+
+### Enable draft with `@odata.draft.enabled`
+Enabling a draft for an entity allows the users to edit the entities. To enable a draft for an entity exposed by a service, follow these steps:
+
+1. Open the srv/productservice.cds file.
+2. Annotate the file with @odata.draft.enabled like this:
+```
+using { sap.ecom.product as ecom } from '../db/schema';
+
+service ProductService { 
+    entity Products as projection on ecom.Product;
+    @readonly
+    entity Category as projection on ecom.Category;
+}
+
+annotate ProductService.Products with @odata.draft.enabled; 
+```
+
