@@ -285,3 +285,12 @@ service ProductService {
 annotate ProductService.Products with @odata.draft.enabled; 
 ```
 
+### Variant Management
+variantManagement defines how the variant management of page personalizations is controlled.
+- None - No variant management by default.
+- Control - Individual personalizations for each control.
+
+Make the change in manifest.json file value can be `Page/Control`
+```
+"variantManagement": "Control",
+```

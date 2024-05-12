@@ -104,7 +104,7 @@
           "options": {
             "settings": {
               "contextPath": "/Products",
-              "variantManagement": "Page",
+              "variantManagement": "Control",
               "navigation": {
                 "Products": {
                   "detail": {
