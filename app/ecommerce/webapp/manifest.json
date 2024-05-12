@@ -84,7 +84,6 @@
       "css": []
     },
     "routing": {
-      "config": {},
       "routes": [
         {
           "pattern": ":?query:",
@@ -110,6 +109,14 @@
                 "Products": {
                   "detail": {
                     "route": "ProductsObjectPage"
+                  }
+                }
+              },
+              "initialLoad": "Enabled",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
                   }
                 }
               }

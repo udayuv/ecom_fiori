@@ -4,27 +4,27 @@ annotate service.Products with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'name',
+            Label : '{i18n>pname}',
             Value : name,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'description',
+            Label : '{i18n>pDesc}',
             Value : description,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'price',
+            Label : '{i18n>price}',
             Value : price,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'rating',
+            Label : '{i18n>rating}',
             Value : rating,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'stock',
+            Label : '{i18n>stock}',
             Value : stock,
         },
     ]

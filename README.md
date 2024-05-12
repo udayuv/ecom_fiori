@@ -176,3 +176,16 @@ annotate service.Category with {
         }
 };
 ```
+
+### Auto Load and Responsive
+to make the list table to load automatically and list page table as responsive
+We can add the below code to manifest.json to ProductList section
+```
+    "initialLoad": "Enabled",
+    "controlConfiguration": {
+    "@com.sap.vocabularies.UI.v1.LineItem": {
+        "tableSettings": {
+        "type": "ResponsiveTable"
+        }
+    }
+```
