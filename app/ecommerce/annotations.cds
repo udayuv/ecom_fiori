@@ -88,7 +88,7 @@ annotate service.Products with @(
             ID : 'GeneratedFacet1',
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup1',
-        },
+        }
     ]
 );
 annotate service.Products with @(
@@ -140,3 +140,18 @@ annotate service.Products with {
 annotate service.Status with {
     code @Common.Text : descr
 };
+annotate service.Products with @(
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : name,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
+        Description : {
+            $Type : 'UI.DataField',
+            Value : description,
+        },
+        TypeImageUrl : 'sap-icon://alert',
+    }
+);

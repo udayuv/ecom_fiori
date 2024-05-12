@@ -189,3 +189,44 @@ We can add the below code to manifest.json to ProductList section
         }
     }
 ```
+
+## Configure the Object Page
+1. Make sure the SAP Fiori page editor is open. If you closed it, choose the **Open Page Map** option in the **Application Info**
+2. In the **Incident Object Page** tile, choose the Pencil icon next to the title.
+3. Choose **Header** and in the **Title** dropdown menu, select **title**. It will update the title on the object page
+```
+annotate service.Products with @(
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : name,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
+    }
+);
+```
+4. In the **Description** Type dropdown menu, select **Property**. A popup opens. In the **Define Property popup**, choose the **dropdown** menu in the Description field and select required field, it will show a decription below the title
+```
+UI.HeaderInfo : {
+        ...
+        TypeNamePlural : '',
+        Description : {
+            $Type : 'UI.DataField',
+            Value : description,
+        },
+    }
+```
+5. In the Icon URL field, enter `sap-icon://alert`. will show on the title header.
+```
+    UI.HeaderInfo : {
+        ...,
+        TypeImageUrl : 'sap-icon://alert',
+    }
+```
+#### Add Overview section
+1. Choose **Sections** and then choose the Plus icon to add more sections. Choose Add Group Section.
+2. In the Add Group Section popup:
+    - Enter Overview in the Label field.
+    - Choose the Globe icon to generate a translatable text key.
+    - Choose Add.
