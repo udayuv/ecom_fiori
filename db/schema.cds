@@ -1,6 +1,6 @@
 namespace sap.ecom.product; 
 
-using {cuid, managed} from '@sap/cds/common';
+using {cuid, managed, sap.common.CodeList} from '@sap/cds/common';
 
 /**
  * Product 
@@ -12,6 +12,7 @@ entity Product : cuid,managed{
     rating      :   Decimal;
     stock       :   Integer;
     category    :   Association to Category;
+    status      :   Association to Status default 'N';
     images      :   ImageLink;
     discount    :   Decimal;
     thumbnail   :   ImageLink;
@@ -23,6 +24,20 @@ entity Product : cuid,managed{
 entity Category : cuid,managed{
     name    :   Name;
     product :   Association to many Product on product.category = $self;
+}
+
+/**
+ * Status of Product
+ */
+
+entity Status : CodeList {
+key code: String enum {
+    new = 'N';
+    out_of_stock = 'O'; 
+    limited_stock = 'L'; 
+    deprecated = 'D';
+};
+criticality : Integer;
 }
 
 /**

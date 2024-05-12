@@ -1,4 +1,5 @@
 using ProductService as service from '../../srv/productservice';
+using from '../../db/schema';
 
 annotate service.Products with @(
     UI.LineItem : [
@@ -26,6 +27,12 @@ annotate service.Products with @(
             $Type : 'UI.DataField',
             Label : '{i18n>stock}',
             Value : stock,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status.descr,
+            Label : '{i18n>status}',
+            Criticality : status.criticality,
         },
     ]
 );
@@ -86,10 +93,10 @@ annotate service.Products with @(
 );
 annotate service.Products with @(
     UI.SelectionFields : [
-        rating,
         name,
         discount,
         category_ID,
+        status_code,
     ]
 );
 annotate service.Products with {
@@ -123,4 +130,13 @@ annotate service.Category with {
             $value : name,
             ![@UI.TextArrangement] : #TextOnly,
         }
+};
+annotate service.Products with {
+    status @Common.Label : '{i18n>status}'
+};
+annotate service.Products with {
+    status @Common.ValueListWithFixedValues : true
+};
+annotate service.Status with {
+    code @Common.Text : descr
 };
